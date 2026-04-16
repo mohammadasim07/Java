@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linked List Visualization</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #f4f4f4;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.controls {
+    margin: 20px;
+}
+
+input, button {
+    padding: 8px;
+    font-size: 16px;
+}
+
+#list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.address {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.box {
+    display: flex;
+    border: 2px solid black;
+}
+
+.data, .next {
+    width: 60px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid black;
+    font-size: 18px;
+}
+
+.next {
+    border-right: none;
+}
+
+.arrow {
+    font-size: 30px;
+    margin: 0 5px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Linked List Visualizer</h1>
+
+<div class="controls">
+    <input type="text" id="valueInput" placeholder="Enter value">
+    <button onclick="addNode()">Add Node</button>
+    <button onclick="resetList()">Reset</button>
+</div>
+
+<div id="list"></div>
+
+<script>
+let nodes = [];
+
+function addNode() {
+    const value = document.getElementById("valueInput").value;
+    if (value === "") return;
+
+    nodes.push(value);
+    document.getElementById("valueInput").value = "";
+    renderList();
+}
+
+function resetList() {
+    nodes = [];
+    renderList();
+}
+
+function renderList() {
+    const listDiv = document.getElementById("list");
+    listDiv.innerHTML = "";
+
+    nodes.forEach((val, i) => {
+
+        // node container
+        const nodeDiv = document.createElement("div");
+        nodeDiv.className = "node";
+
+        // address label
+        const address = document.createElement("div");
+        address.className = "address";
+        address.innerText = "m" + (i + 1);
+
+        // box container
+        const box = document.createElement("div");
+        box.className = "box";
+
+        // data box
+        const data = document.createElement("div");
+        data.className = "data";
+        data.innerText = val;
+
+        // next pointer box
+        const next = document.createElement("div");
+        next.className = "next";
+        next.innerText = (i < nodes.length - 1) ? "m" + (i + 2) : "NULL";
+
+        box.appendChild(data);
+        box.appendChild(next);
+
+        nodeDiv.appendChild(address);
+        nodeDiv.appendChild(box);
+
+        listDiv.appendChild(nodeDiv);
+
+        // arrow
+        if (i < nodes.length - 1) {
+            const arrow = document.createElement("div");
+            arrow.className = "arrow";
+            arrow.innerHTML = "→";
+            listDiv.appendChild(arrow);
+        }
+    });
+}
+</script>
+
+</body>
+</html>

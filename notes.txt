@@ -1,0 +1,49 @@
+Static Block->           static{...}  it will run when the class loads in memory... (run first) it will run only ones;
+Instance Block->         {...}             run every time when obg created        (run second) 
+Constructor->             classname                                                (run last)
+Static method->           can't access non static instance or this...
+==           ->           compare the address/referance...
+String constant pool->
+Main method overloading->
+JIT just in time it is in JVM
+final method -> give error when override
+final class -> avoid inheritance
+ 
+down casting ->  child obj = (child) old_obj;
+
+
+member inner class -> out side method and in side class
+local inner class -> in side method as well as in side class
+
+inner class have hidden referance of outer class 
+
+"""
+make object in class in side class->
+outerclass ob = new outerclass();
+outerclass.inner obj = ob.new inner();
+
+"""
+
+
+final and effective final
+final -> constant 
+effective final -> with out making final any variable we are treating it as a final (ex: int a = 10;   we are just treating we can't change the value if a )
+
+An anonymous class is a class without a name
+It is used only once (on the spot)
+
+functional interface
+
+{predicate
+funcation
+consumer
+supply}
+
+
+
+try and catch Block
+
+stack trace
+
+Assertion
+
